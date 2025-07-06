@@ -1,6 +1,6 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
-if true then return {} end
+-- if true then return {} end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
@@ -38,6 +38,19 @@ return {
     opts = function(_, opts)
       table.insert(opts.sources, { name = "emoji" })
     end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        rust = { "rustfmt" },
+      },
+    },
+    format_on_save = {
+      lsp_fallback = true,
+      timeout_ms = 500,
+    },
   },
 
   -- change some telescope options and a keymap to browse plugin files
@@ -114,6 +127,7 @@ return {
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
   { import = "lazyvim.plugins.extras.lang.typescript" },
+  { import = "lazyvim.plugins.extras.lang.rust" },
 
   -- add more treesitter parsers
   {
@@ -132,6 +146,7 @@ return {
         "python",
         "query",
         "regex",
+        "rust",
         "tsx",
         "typescript",
         "vim",
@@ -189,6 +204,9 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "rust-analyzer",
+        "codelldb",
+        "taplo",
         "stylua",
         "shellcheck",
         "shfmt",
