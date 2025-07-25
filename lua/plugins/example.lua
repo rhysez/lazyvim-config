@@ -9,22 +9,17 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  {
-  'stevedylandev/darkmatter-nvim',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.cmd('colorscheme darkmatter')
-  end,
-},
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
+    {
+      'sainnhe/gruvbox-material',
+      lazy = false,
+      priority = 1000,
+      config = function()
+        -- Optionally configure and load the colorscheme
+        -- directly inside the plugin declaration.
+        vim.g.gruvbox_material_enable_italic = true
+        vim.cmd.colorscheme('gruvbox-material')
+      end
     },
-  },
-
   -- change trouble config
   {
     "folke/trouble.nvim",
