@@ -72,6 +72,18 @@ return {
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  'class="([^"]*)"',
+                  'class:\\s*"([^"]*)"',
+                },
+              },
+            },
+          },
+        },
       },
     },
   },
@@ -128,6 +140,7 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+        "php",
         "query",
         "regex",
         "tsx",
@@ -191,6 +204,25 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+      },
+    },
+  },
+  {
+    "jwalton512/vim-blade",
+    ft = { "blade.php" },
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        php = { "pint" },
+      },
+      formatters = {
+        pint = {
+          command = "vendor/bin/pint",
+          args = { "--quiet", "$FILENAME" },
+          stdin = false,
+        },
       },
     },
   },
