@@ -5,14 +5,14 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
-  { "rebelot/kanagawa.nvim" },
+  -- add colorscheme
+  { "phha/zenburn.nvim" },
 
-  -- Configure LazyVim to load gruvbox
+  -- Configure LazyVim to load the colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa",
+      colorscheme = "zenburn",
     },
   },
 
